@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+        <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+        <title>VUmeter</title>
+        
+        <link href="stylesheets/vumeter.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="example1">
+            <div>L freq_<span id="freqL">000</span></div>        
+            <div>&nbsp; <canvas class='volumeBar' id='canvasL' width='300' height='5'></canvas></div>
+
+            <div><span class='labelText'>L</span> <canvas class='volumeBar' id='canvasLEDL' width='300' height='8'></canvas></div>
+            <div class='labelText'>
+                <span class='level-20'>db-20</span>
+                <span class='level-13'>13</span>
+                <span class='level-8'>8</span>
+                <span class='level-5'>5</span>
+                <span class='level-2'>2</span>
+                <span class='level-0'>0</span>
+                <span class='level-2p'>2</span>
+                <span class='level-dd'>DD</span>
+                <span class='level-4p'>4</span>
+                <span class='level-6p'>6</span>
+                <span class='level-8p'>8</span>
+                <span class='level-10p'>+12</span>
+            </div>
+            <div><span class='labelText'>R</span> <canvas class='volumeBar' id='canvasLEDR' width='300' height='8'></canvas></div>
+
+            <div>&nbsp; <canvas class='volumeBar alignTop' id='canvasR' width='300' height='5'></canvas></div>
+            <div>R freq_<span id="freqR">000</span></div>
+        </div>
+
+        <br>
+
+
+        <div id="example2">
+            <table>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">L</td>
+                        <td><canvas class='volumeBar' id='canvasL2' width='150' height='2'></canvas></td>
+                        <td><canvas class='volumeBar' id='canvasR2' width='150' height='2'></canvas></td>
+                        <td rowspan="2">R</td>
+                    </tr>
+                    <tr>
+                        <td><canvas class='volumeBar' id='canvasLEDL2' width='150' height='10'></canvas></td>
+                        <td><canvas class='volumeBar' id='canvasLEDR2' width='150' height='10'></canvas></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <br>
+        
+        <div id="example3">&nbsp; 
+            <table>
+                <tbody>
+                    <tr>
+                        <td><canvas class='volumeBar' id='canvasLV' width='3' height='150'></canvas></td>
+                        <td><canvas class='volumeBar' id='canvasLEDLV' width='8' height='150'></canvas></td>
+                        <td><canvas class='volumeBar' id='canvasLEDRV' width='8' height='150'></canvas></td>
+                        <td><canvas class='volumeBar' id='canvasRV' width='3' height='150'></canvas></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan=2><span class='labelText'>L</span></th>
+                        <th colspan=2><span class='labelText'>R</span></th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        
+        <div id="example4">&nbsp; 
+            <table>
+                <tbody>
+                    <tr>
+                        <td><canvas class='volumeBar' id='canvasLV2' width='5' height='150'></canvas></td>
+                        <td><canvas class='volumeBar' id='canvasLEDLV2' width='5' height='150'></canvas></td>
+                        <td><canvas class='volumeBar' id='canvasLEDRV2' width='5' height='150'></canvas></td>
+                        <td><canvas class='volumeBar' id='canvasRV2' width='5' height='150'></canvas></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan=2>L</th>
+                        <th colspan=2>R</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <script type="module" src="./renderer.js"></script>
+        <script type="module" src="./client.js"></script>
+
+    </body>
+</html>

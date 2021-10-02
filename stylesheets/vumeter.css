@@ -1,0 +1,164 @@
+@font-face {
+    font-family: ChessType;
+    src: url('/fonts/chessType/ChessType.ttf');
+}
+
+@font-face {
+    font-family: DigitalDismay;
+    src: url('/fonts/digitalDismay/Digital Dismay.otf');
+}
+
+@font-face {
+    font-family: DigitalReadout;
+    src: url('/fonts/digitalReadout/SFDigitalReadout-Medium.ttf');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: DigitalReadout;
+    src: url('/fonts/digitalReadout/SFDigitalReadout-MediumObli.ttf');
+    font-style: oblique;
+}
+
+@font-face {
+    font-family: DigitalReadoutHeavy;
+    src: url('/fonts/digitalReadout/SFDigitalReadout-Heavy.ttf');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: DigitalReadoutHeavy;
+    src: url('/fonts/digitalReadout/SFDigitalReadout-HeavyObliq.ttf');
+    font-style: oblique;
+}
+
+@font-face {
+    font-family: DigitalReadoutLight;
+    src: url('/fonts/digitalReadout/SFDigitalReadout-Light.ttf');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: DigitalReadoutLight;
+    src: url('/fonts/digitalReadout/SFDigitalReadout-LightObliq.ttf');
+    font-style: oblique;
+}
+
+@font-face {
+    font-family: dotty;
+    src: url('/fonts/dotty/dotty.ttf');
+}
+
+@font-face {
+    font-family: highSpeed;
+    src: url('/fonts/highspeed/HIGHSPEED.TTF');
+}
+
+@font-face {
+    font-family: ledCounter7;
+    src: url('/fonts/ledCounter7/led_counter-7.ttf');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: ledCounter7;
+    src: url('/fonts/ledCounter7/led_counter-7_italic.ttf');
+    font-style: italic;
+}
+
+@font-face {
+    font-family: ledDisplay7;
+    src: url('/fonts/ledDisplay7/led_display-7.ttf');
+}
+
+@font-face {
+    font-family: minisystem;
+    src: url('../fonts/minisystem/minisystem.ttf');
+}
+
+@font-face {
+    font-family: Segment14;
+    src: url('/fonts/Segment14/Segment14.otf');
+}
+
+@font-face {
+    font-family: TickingTimebomb;
+    src: url('/fonts/tickingthebomb/TickingTimebombBB.ttf');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: TickingTimebomb;
+    src: url('/fonts/tickingthebomb/TickingTimebombBB_ital.ttf');
+    font-style: italic;
+}
+
+body {
+    padding: 10px;
+    font: 10px "minisystem", Helvetica, Arial, sans-serif;
+    font-style: normal;
+    color: white;
+    background-color: rgb(27, 27, 27);
+}
+  
+.alignTop {
+    vertical-align: top;
+}
+
+.labelText {
+    font: 8px Helvetica, Arial, sans-serif;
+}
+
+
+.level-20 {
+    display: inline-block;
+    width: 40px;
+}
+.level-13 {
+    display: inline-block;
+    width: 18px;
+}
+.level-8 {
+    display: inline-block;
+    width: 24px;
+}
+.level-5 {
+    display: inline-block;
+    width: 24px;
+}
+.level-2 {
+    display: inline-block;
+    width: 24px;
+}
+.level-0 {
+    display: inline-block;
+    width: 24px;
+}
+.level-dd {
+    display: inline-block;
+    width: 24px;
+}
+.level-2p {
+    display: inline-block;
+    width: 24px;
+}
+.level-4p {
+    display: inline-block;
+    color: red;
+    width: 24px;
+}
+.level-6p {
+    display: inline-block;
+    color: red;
+    width: 24px;
+}
+.level-8p {
+    display: inline-block;
+    color: red;
+    width: 24px;
+}
+.level-10p {
+    display: inline-block;
+    color: red;
+    width: 24px;
+}
