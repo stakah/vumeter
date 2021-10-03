@@ -3,11 +3,17 @@ import Renderer from "./renderer.js";
 import VUmeter from "./modules/vumeter.js";
 
 const renderer = new Renderer()
-renderer.setup()
 
 window.api.receive('from-example-ch', (data) => {
     switch (data) {
-        case "example1":if (renderer.isExampleVisible("example1")) renderer.hideExample("example1"); else renderer.showExample("example1")
+        case "example1":
+            if (renderer.isExampleVisible("example1")) {
+                renderer.hideExample("example1"); 
+            }
+            else {
+                renderer.setupExample1();
+                renderer.showExample("example1")
+            }
         break;
         case "example2":if (renderer.isExampleVisible("example2")) renderer.hideExample("example2"); else renderer.showExample("example2")
         break;
@@ -84,6 +90,7 @@ function gotStreamFailed(err) {
 
 window.onload = function() {
     const elFreqL = document.getElementById('freqL');
+    renderer.setup()
 
     console.log(elFreqL);
     var constraints = {
@@ -102,3 +109,9 @@ window.onload = function() {
 
 }
 
+window.onresize = function() {
+    renderer.setupExample1()
+    renderer.setupExample2()
+    renderer.setupExample3()
+    renderer.setupExample4()
+}

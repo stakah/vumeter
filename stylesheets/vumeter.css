@@ -93,6 +93,16 @@
     font-style: italic;
 }
 
+  
+.labelText {
+    font: 8px Helvetica, Arial, sans-serif;
+}
+  
+.labelWidth {
+    display: inline-block;
+    width: 16px;
+}
+  
 body {
     padding: 10px;
     font: 10px "minisystem", Helvetica, Arial, sans-serif;
@@ -105,60 +115,39 @@ body {
     vertical-align: top;
 }
 
-.labelText {
-    font: 8px Helvetica, Arial, sans-serif;
+/* :root {
+    --label-width : 0%;
 }
 
-
-.level-20 {
-    display: inline-block;
-    width: 40px;
-}
-.level-13 {
-    display: inline-block;
-    width: 18px;
-}
-.level-8 {
-    display: inline-block;
-    width: 24px;
-}
-.level-5 {
-    display: inline-block;
-    width: 24px;
-}
-.level-2 {
-    display: inline-block;
-    width: 24px;
-}
-.level-0 {
-    display: inline-block;
-    width: 24px;
-}
-.level-dd {
-    display: inline-block;
-    width: 24px;
-}
-.level-2p {
-    display: inline-block;
-    width: 24px;
-}
-.level-4p {
-    display: inline-block;
-    color: red;
-    width: 24px;
-}
-.level-6p {
-    display: inline-block;
-    color: red;
-    width: 24px;
-}
+.level-20,
+.level-13,
+.level-8,
+.level-5,
+.level-2,
+.level-0,
+.level-dd,
+.level-2p,
+.level-4p,
+.level-6p,
 .level-8p {
     display: inline-block;
-    color: red;
-    width: 24px;
-}
+    width: var(--label-width);
+} */
+
+.level-4p,
+.level-6p,
+.level-8p,
 .level-10p {
-    display: inline-block;
     color: red;
-    width: 24px;
+}
+
+.level-10p {
+    color: orange;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#table-ex1 {
+    table-layout: fixed;
+    width: 100%;
 }

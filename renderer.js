@@ -34,6 +34,8 @@ export default class Renderer {
         return el && el.style.display != "none";
     }
 
+    ex1 = {}
+
     setupExample1(){
         const canvasEx1L = document.getElementById('canvasL');
         const canvasEx1R = document.getElementById('canvasR');
@@ -44,6 +46,21 @@ export default class Renderer {
         const canvasEx1LedR = document.getElementById('canvasLEDR');
         this.canvasEx1LedLCtx = canvasEx1LedL.getContext('2d');
         this.canvasEx1LedRCtx = canvasEx1LedR.getContext('2d');
+        
+        // const W = window.innerWidth, H = window.innerHeight
+        const paddingLeft   = parseFloat(window.getComputedStyle(document.body).getPropertyValue('padding-left'))
+        const paddingRight  = parseFloat(window.getComputedStyle(document.body).getPropertyValue('padding-right'))
+        const paddingTop    = parseFloat(window.getComputedStyle(document.body).getPropertyValue('padding-top'))
+        const paddingBottom = parseFloat(window.getComputedStyle(document.body).getPropertyValue('padding-bottom'))
+        const labelWidtth = 24
+    
+        const W = document.body.clientWidth - paddingLeft - paddingRight - labelWidtth
+
+        canvasEx1L.width = W;
+        canvasEx1R.width = W;
+
+        canvasEx1LedL.width = W;
+        canvasEx1LedR.width = W;
         
         const ccLed1 = {
             maxGroups: 12, ledsPerGroup: 4, gap: 1.0 / (12 * 4) * 0.1, epsilon: 0.001,
