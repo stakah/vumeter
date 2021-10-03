@@ -47,14 +47,10 @@ export default class Renderer {
         this.canvasEx1LedLCtx = canvasEx1LedL.getContext('2d');
         this.canvasEx1LedRCtx = canvasEx1LedR.getContext('2d');
         
-        // const W = window.innerWidth, H = window.innerHeight
         const paddingLeft   = parseFloat(window.getComputedStyle(document.body).getPropertyValue('padding-left'))
         const paddingRight  = parseFloat(window.getComputedStyle(document.body).getPropertyValue('padding-right'))
-        const paddingTop    = parseFloat(window.getComputedStyle(document.body).getPropertyValue('padding-top'))
-        const paddingBottom = parseFloat(window.getComputedStyle(document.body).getPropertyValue('padding-bottom'))
-        const labelWidtth = 24
     
-        const W = document.body.clientWidth - paddingLeft - paddingRight - labelWidtth
+        const W = document.body.clientWidth - paddingLeft - paddingRight
 
         canvasEx1L.width = W;
         canvasEx1R.width = W;
