@@ -1,5 +1,7 @@
 const { app, BrowserWindow, Menu, MenuItem } = require('electron')
 
+app.disableHardwareAcceleration()
+
 // include the Node.js 'path' module at the top of your file
 const path = require('path')
 

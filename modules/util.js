@@ -1,14 +1,34 @@
 export default class Util {
     constructor (){
-
+        this.elements = {}
     }
 
-    static print(elementName, str){
+    _putElement(elementName){
+        const el = document.getElementById(elementName)
+        if (el) this.elements[elementName] = el
+
+        return el
+    }
+
+    _getElement(elementName){
+        const el = this.elements[elementName]
+        if (el) return el
+
+        return this._putElement(elementName)
+    }
+
+    print(elementName, str){
         // console.log(str);
-        document.getElementById(elementName).textContent = '' + str;
+        const el = this._getElement(elementName)
+        if (el) el.textContent = '' + str;
     }
     
-    static drawVolumeBar(canvasCtx, volumeBar){
+    formatNumber(num, minimumIntegerDigits = 5){
+        const str = '' + num
+        return str.substring(0,minimumIntegerDigits)        
+    }
+    
+    drawVolumeBar(canvasCtx, volumeBar){
         const ctx = canvasCtx;
         const cc = volumeBar.canvasConstraints;
     

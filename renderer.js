@@ -7,6 +7,8 @@ export default class Renderer {
     examples = {}
 
     setup(){
+        this.util = new Util()
+
         for (let i=1; i<=4; i++){
             this.examples[`example${i}`] = document.getElementById(`example${i}`)
             this.hideExample(`example${i}`)
@@ -17,6 +19,7 @@ export default class Renderer {
         this.setupExample4()
 
         this.showExample("example1");
+
     }
 
     showExample(example){
@@ -85,20 +88,20 @@ export default class Renderer {
         const LedVolumeBarL = VolumeBar.getLEDVolumeBar(this.ccEx1Led, rmsVolumeL, 128);
         const LedVolumeBarR = VolumeBar.getLEDVolumeBar(this.ccEx1Led, rmsVolumeR, 128);
         
-        Util.drawVolumeBar(this.canvasEx1LedLCtx, LedVolumeBarL);
-        Util.drawVolumeBar(this.canvasEx1LedRCtx, LedVolumeBarR);
+        this.util.drawVolumeBar(this.canvasEx1LedLCtx, LedVolumeBarL);
+        this.util.drawVolumeBar(this.canvasEx1LedRCtx, LedVolumeBarR);
         
         const volumeBarL = VolumeBar.getVolumeBar(this.ccEx1, volumeL, 128);
         const volumeBarR = VolumeBar.getVolumeBar(this.ccEx1, volumeR, 128);
 
-        Util.drawVolumeBar(this.canvasEx1LCtx, volumeBarL);
-        Util.drawVolumeBar(this.canvasEx1RCtx, volumeBarR);
+        this.util.drawVolumeBar(this.canvasEx1LCtx, volumeBarL);
+        this.util.drawVolumeBar(this.canvasEx1RCtx, volumeBarR);
 
         const ledInfoL = LedVolumeBarL.ledInfo;
         const ledInfoR = LedVolumeBarR.ledInfo;
 
-        const fullFreqLStr = fullFreqL.toLocaleString('en-US',{minimumIntegerDigits:5, useGrouping:false});
-        const fullFreqRStr = fullFreqR.toLocaleString('en-US',{minimumIntegerDigits:5, useGrouping:false});
+        const fullFreqLStr = this.util.formatNumber(fullFreqL)
+        const fullFreqRStr = this.util.formatNumber(fullFreqR)
 
         const volumeLStr = volumeL.toFixed(3);
         const volumeRStr = volumeR.toFixed(3);
@@ -106,11 +109,11 @@ export default class Renderer {
         const levelLStr = ledInfoL.level.toFixed(3);
         const levelRStr = ledInfoR.level.toFixed(3);
         
-        const groupLStr = ledInfoL.groups.toLocaleString('en-US', {minimumIntegerDigits:2});
-        const groupRStr = ledInfoR.groups.toLocaleString('en-US', {minimumIntegerDigits:2});
+        const groupLStr = this.util.formatNumber(ledInfoL.groups, 2);
+        const groupRStr = this.util.formatNumber(ledInfoR.groups, 2);
         
-        Util.print('freqL', `${fullFreqLStr} level_${levelLStr} group_${groupLStr} vol_${volumeLStr}`);
-        Util.print('freqR', `${fullFreqRStr} level_${levelRStr} group_${groupRStr} vol_${volumeRStr}`);
+        this.util.print('freqL', `${fullFreqLStr} level_${levelLStr} group_${groupLStr} vol_${volumeLStr}`);
+        this.util.print('freqR', `${fullFreqRStr} level_${levelRStr} group_${groupRStr} vol_${volumeRStr}`);
     }
         
 
@@ -147,31 +150,30 @@ export default class Renderer {
             led: ccLed2,
         }
         
+        this.cc2L = {};
+        this.cc2LedL = {};
+        
+        Object.assign(this.cc2L, this.ccEx2);
+        Object.assign(this.cc2LedL, this.ccEx2Led);
+        
+        this.cc2L.align = 'end';
+        this.cc2LedL.align = 'end';
     }
 
     drawExample2(dataL, dataR, rmsVolumeL, rmsVolumeR, volumeL, volumeR){
         if (!this.isExampleVisible("example2")) return;
 
-        let cc2L = {};
-        let cc2LedL = {};
-        
-        Object.assign(cc2L, this.ccEx2);
-        Object.assign(cc2LedL, this.ccEx2Led);
-        
-        cc2L.align = 'end';
-        cc2LedL.align = 'end';
-
-        const LedVolumeBar2L = VolumeBar.getLEDVolumeBar(cc2LedL, rmsVolumeL, 128);
+        const LedVolumeBar2L = VolumeBar.getLEDVolumeBar(this.cc2LedL, rmsVolumeL, 128);
         const LedVolumeBar2R = VolumeBar.getLEDVolumeBar(this.ccEx2Led, rmsVolumeR, 128);
 
-        Util.drawVolumeBar(this.canvasEx2LedLCtx, LedVolumeBar2L);
-        Util.drawVolumeBar(this.canvasEx2LedRCtx, LedVolumeBar2R);
+        this.util.drawVolumeBar(this.canvasEx2LedLCtx, LedVolumeBar2L);
+        this.util.drawVolumeBar(this.canvasEx2LedRCtx, LedVolumeBar2R);
 
-        const volumeBar2L = VolumeBar.getSegmentedVolumeBar(cc2L, volumeR, 128);
+        const volumeBar2L = VolumeBar.getSegmentedVolumeBar(this.cc2L, volumeR, 128);
         const volumeBar2R = VolumeBar.getSegmentedVolumeBar(this.ccEx2, volumeR, 128);
 
-        Util.drawVolumeBar(this.canvasEx2LCtx, volumeBar2L);
-        Util.drawVolumeBar(this.canvasEx2RCtx, volumeBar2R);
+        this.util.drawVolumeBar(this.canvasEx2LCtx, volumeBar2L);
+        this.util.drawVolumeBar(this.canvasEx2RCtx, volumeBar2R);
 
     }
         
@@ -216,14 +218,14 @@ export default class Renderer {
         const LedVolumeBarLV = VolumeBar.getLEDVolumeBar(this.ccEx3Led, rmsVolumeL, 128);
         const LedVolumeBarRV = VolumeBar.getLEDVolumeBar(this.ccEx3Led, rmsVolumeR, 128);
         
-        Util.drawVolumeBar(this.canvasEx3LedLCtx, LedVolumeBarLV);
-        Util.drawVolumeBar(this.canvasEx3LedRCtx, LedVolumeBarRV);
+        this.util.drawVolumeBar(this.canvasEx3LedLCtx, LedVolumeBarLV);
+        this.util.drawVolumeBar(this.canvasEx3LedRCtx, LedVolumeBarRV);
 
         const volumeBarLV = VolumeBar.getSegmentedVolumeBar(this.ccEx3, volumeL, 128);
         const volumeBarRV = VolumeBar.getSegmentedVolumeBar(this.ccEx3, volumeR, 128);
 
-        Util.drawVolumeBar(this.canvasEx3LCtx, volumeBarLV);
-        Util.drawVolumeBar(this.canvasEx3RCtx, volumeBarRV);
+        this.util.drawVolumeBar(this.canvasEx3LCtx, volumeBarLV);
+        this.util.drawVolumeBar(this.canvasEx3RCtx, volumeBarRV);
 
     }
         
@@ -262,14 +264,14 @@ export default class Renderer {
         const volLedEx4L = VolumeBar.getLEDVolumeBar(this.ccEx4, rmsVolumeL, 128);
         const volLedEx4R = VolumeBar.getLEDVolumeBar(this.ccEx4, rmsVolumeR, 128);
         
-        Util.drawVolumeBar(this.canvasEx4LedLCtx, volLedEx4L);
-        Util.drawVolumeBar(this.canvasEx4LedRCtx, volLedEx4R);
+        this.util.drawVolumeBar(this.canvasEx4LedLCtx, volLedEx4L);
+        this.util.drawVolumeBar(this.canvasEx4LedRCtx, volLedEx4R);
 
         const volumeBarL = VolumeBar.getSegmentedVolumeBar(this.ccEx4, volumeL, 128);
         const volumeBarR = VolumeBar.getSegmentedVolumeBar(this.ccEx4, volumeR, 128);
 
-        Util.drawVolumeBar(this.canvasEx4LCtx, volumeBarL);
-        Util.drawVolumeBar(this.canvasEx4RCtx, volumeBarR);
+        this.util.drawVolumeBar(this.canvasEx4LCtx, volumeBarL);
+        this.util.drawVolumeBar(this.canvasEx4RCtx, volumeBarR);
 
     }
 
