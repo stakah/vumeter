@@ -17,22 +17,39 @@ function createWindow () {
     const menu = Menu.getApplicationMenu() || new Menu()
 
     const vuMenu = new Menu({label:'vumeter'})
-    vuMenu.append(new MenuItem({label:'example1', click:(event, focusedWindow, webContents)=>{
-        console.log('example1 clicked')
-        win.webContents.send('from-example-ch', 'example1')
-    }}))
-    vuMenu.append(new MenuItem({label:'example2', click:(event, focusedWindow, webContents)=>{
-        console.log('example2 clicked')
-        win.webContents.send('from-example-ch', 'example2')
-    }}))
-    vuMenu.append(new MenuItem({label:'example3', click:(event, focusedWindow, webContents)=>{
-        console.log('example3 clicked')
-        win.webContents.send('from-example-ch', 'example3')
-    }}))
-    vuMenu.append(new MenuItem({label:'example4', click:(event, focusedWindow, webContents)=>{
-        console.log('example4 clicked')
-        win.webContents.send('from-example-ch', 'example4')
-    }}))
+    vuMenu.append(new MenuItem({label:'example1', 
+        type:'checkbox',
+        checked:true,
+        click:(event, focusedWindow, webContents)=>{
+            console.log('example1 clicked')
+            win.webContents.send('from-example-ch', 'example1')
+            this.checked = !this.checked
+        }
+    }))
+    vuMenu.append(new MenuItem({label:'example2', 
+        type:'checkbox',
+        click:(event, focusedWindow, webContents)=>{
+            console.log('example2 clicked')
+            win.webContents.send('from-example-ch', 'example2')
+            this.checked = !this.checked
+        }
+    }))
+    vuMenu.append(new MenuItem({label:'example3', 
+        type:'checkbox',
+        click:(event, focusedWindow, webContents)=>{
+            console.log('example3 clicked')
+            win.webContents.send('from-example-ch', 'example3')
+            this.checked = !this.checked
+        }
+    }))
+    vuMenu.append(new MenuItem({label:'example4', 
+        type:'checkbox',
+        click:(event, focusedWindow, webContents)=>{
+            console.log('example4 clicked')
+            win.webContents.send('from-example-ch', 'example4')
+            this.checked = !this.checked
+        }
+    }))
     menu.append(new MenuItem({label:'vumeter', submenu:vuMenu}))
     
     win.setMenu(menu)

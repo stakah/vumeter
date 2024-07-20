@@ -81,18 +81,18 @@ export default class Renderer {
         
     }
 
-    drawExample1(dataL, dataR, rmsVolumeL, rmsVolumeR, volumeL, volumeR, fullFreqL, fullFreqR){
+    drawExample1(dataL, dataR, rmsVolumeL, rmsVolumeR, volumeL, volumeR, maxVolume, fullFreqL, fullFreqR){
 
         if (!this.isExampleVisible("example1")) return;
 
-        const LedVolumeBarL = VolumeBar.getLEDVolumeBar(this.ccEx1Led, rmsVolumeL, 128);
-        const LedVolumeBarR = VolumeBar.getLEDVolumeBar(this.ccEx1Led, rmsVolumeR, 128);
+        const LedVolumeBarL = VolumeBar.getLEDVolumeBar(this.ccEx1Led, rmsVolumeL, maxVolume);
+        const LedVolumeBarR = VolumeBar.getLEDVolumeBar(this.ccEx1Led, rmsVolumeR, maxVolume);
         
         this.util.drawVolumeBar(this.canvasEx1LedLCtx, LedVolumeBarL);
         this.util.drawVolumeBar(this.canvasEx1LedRCtx, LedVolumeBarR);
         
-        const volumeBarL = VolumeBar.getVolumeBar(this.ccEx1, volumeL, 128);
-        const volumeBarR = VolumeBar.getVolumeBar(this.ccEx1, volumeR, 128);
+        const volumeBarL = VolumeBar.getVolumeBar(this.ccEx1, volumeL, maxVolume);
+        const volumeBarR = VolumeBar.getVolumeBar(this.ccEx1, volumeR, maxVolume);
 
         this.util.drawVolumeBar(this.canvasEx1LCtx, volumeBarL);
         this.util.drawVolumeBar(this.canvasEx1RCtx, volumeBarR);
@@ -160,17 +160,17 @@ export default class Renderer {
         this.cc2LedL.align = 'end';
     }
 
-    drawExample2(dataL, dataR, rmsVolumeL, rmsVolumeR, volumeL, volumeR){
+    drawExample2(dataL, dataR, rmsVolumeL, rmsVolumeR, volumeL, volumeR, maxVolume){
         if (!this.isExampleVisible("example2")) return;
 
-        const LedVolumeBar2L = VolumeBar.getLEDVolumeBar(this.cc2LedL, rmsVolumeL, 128);
-        const LedVolumeBar2R = VolumeBar.getLEDVolumeBar(this.ccEx2Led, rmsVolumeR, 128);
+        const LedVolumeBar2L = VolumeBar.getLEDVolumeBar(this.cc2LedL, rmsVolumeL, maxVolume);
+        const LedVolumeBar2R = VolumeBar.getLEDVolumeBar(this.ccEx2Led, rmsVolumeR, maxVolume);
 
         this.util.drawVolumeBar(this.canvasEx2LedLCtx, LedVolumeBar2L);
         this.util.drawVolumeBar(this.canvasEx2LedRCtx, LedVolumeBar2R);
 
-        const volumeBar2L = VolumeBar.getSegmentedVolumeBar(this.cc2L, volumeR, 128);
-        const volumeBar2R = VolumeBar.getSegmentedVolumeBar(this.ccEx2, volumeR, 128);
+        const volumeBar2L = VolumeBar.getSegmentedVolumeBar(this.cc2L, volumeR, maxVolume);
+        const volumeBar2R = VolumeBar.getSegmentedVolumeBar(this.ccEx2, volumeR, maxVolume);
 
         this.util.drawVolumeBar(this.canvasEx2LCtx, volumeBar2L);
         this.util.drawVolumeBar(this.canvasEx2RCtx, volumeBar2R);
@@ -212,17 +212,17 @@ export default class Renderer {
         
     }
 
-    drawExample3(dataL, dataR, rmsVolumeL, rmsVolumeR, volumeL, volumeR){
+    drawExample3(dataL, dataR, rmsVolumeL, rmsVolumeR, volumeL, volumeR, maxVolume){
         if (!this.isExampleVisible("example3")) return;
 
-        const LedVolumeBarLV = VolumeBar.getLEDVolumeBar(this.ccEx3Led, rmsVolumeL, 128);
-        const LedVolumeBarRV = VolumeBar.getLEDVolumeBar(this.ccEx3Led, rmsVolumeR, 128);
+        const LedVolumeBarLV = VolumeBar.getLEDVolumeBar(this.ccEx3Led, rmsVolumeL, maxVolume);
+        const LedVolumeBarRV = VolumeBar.getLEDVolumeBar(this.ccEx3Led, rmsVolumeR, maxVolume);
         
         this.util.drawVolumeBar(this.canvasEx3LedLCtx, LedVolumeBarLV);
         this.util.drawVolumeBar(this.canvasEx3LedRCtx, LedVolumeBarRV);
 
-        const volumeBarLV = VolumeBar.getSegmentedVolumeBar(this.ccEx3, volumeL, 128);
-        const volumeBarRV = VolumeBar.getSegmentedVolumeBar(this.ccEx3, volumeR, 128);
+        const volumeBarLV = VolumeBar.getSegmentedVolumeBar(this.ccEx3, volumeL, maxVolume);
+        const volumeBarRV = VolumeBar.getSegmentedVolumeBar(this.ccEx3, volumeR, maxVolume);
 
         this.util.drawVolumeBar(this.canvasEx3LCtx, volumeBarLV);
         this.util.drawVolumeBar(this.canvasEx3RCtx, volumeBarRV);
@@ -258,17 +258,17 @@ export default class Renderer {
         
     }
 
-    drawExample4(dataL, dataR, rmsVolumeL, rmsVolumeR, volumeL, volumeR){
+    drawExample4(dataL, dataR, rmsVolumeL, rmsVolumeR, volumeL, volumeR, maxVolume){
         if (!this.isExampleVisible("example4")) return;
 
-        const volLedEx4L = VolumeBar.getLEDVolumeBar(this.ccEx4, rmsVolumeL, 128);
-        const volLedEx4R = VolumeBar.getLEDVolumeBar(this.ccEx4, rmsVolumeR, 128);
+        const volLedEx4L = VolumeBar.getLEDVolumeBar(this.ccEx4, rmsVolumeL, maxVolume);
+        const volLedEx4R = VolumeBar.getLEDVolumeBar(this.ccEx4, rmsVolumeR, maxVolume);
         
         this.util.drawVolumeBar(this.canvasEx4LedLCtx, volLedEx4L);
         this.util.drawVolumeBar(this.canvasEx4LedRCtx, volLedEx4R);
 
-        const volumeBarL = VolumeBar.getSegmentedVolumeBar(this.ccEx4, volumeL, 128);
-        const volumeBarR = VolumeBar.getSegmentedVolumeBar(this.ccEx4, volumeR, 128);
+        const volumeBarL = VolumeBar.getSegmentedVolumeBar(this.ccEx4, volumeL, maxVolume);
+        const volumeBarR = VolumeBar.getSegmentedVolumeBar(this.ccEx4, volumeR, maxVolume);
 
         this.util.drawVolumeBar(this.canvasEx4LCtx, volumeBarL);
         this.util.drawVolumeBar(this.canvasEx4RCtx, volumeBarR);
