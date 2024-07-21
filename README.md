@@ -1,5 +1,8 @@
 # README
 
+![anim](./docs/vumeter-anim.gif)
+
+
 ## Add Electron Forge as development dependency
 
 ```cmd
