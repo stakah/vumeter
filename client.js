@@ -1,4 +1,3 @@
-// const { default: Renderer } = require("./renderer");
 import Renderer from "./renderer.js";
 import VUmeter from "./modules/vumeter.js";
 
@@ -26,12 +25,7 @@ window.api.receive('from-example-ch', (data) => {
     }
 })
 
-navigator.getUserMedia = navigator.getUserMedia
-                       || navigator.webkitGetUserMedia
-                       || navigator.mozGetUserMedia;
-
-
-function callback(stream) {
+function callback2(stream) {
     var ctx = new AudioContext();
     var mic = ctx.createMediaStreamSource(stream);
     var splitter = ctx.createChannelSplitter();
@@ -86,13 +80,6 @@ function callback(stream) {
     play();
 }
 
-function gotStream() {
-    console.log('getUserMedia:gotStream');
-}
-function gotStreamFailed(err) {
-    console.log('getUserMedia:gotStreamFailed', err);
-}
-
 function updateInputVolume() {
     inputVolume = this.value;
     var output = document.getElementById("inputVolume")
@@ -115,18 +102,18 @@ async function enumerate() {
     }
 }
 
-async function getMedia(constraints) {
-    let stream = null;
+async function getMedia2(constraints) {
 
-    try {
-        stream = await navigator.mediaDevices.getUserMedia(constraints);
-
-        callback(stream);
-    } catch (err) {
-        console.log('error:');
-        console.log(err);
-    }
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia(constraints);
+    
+            callback2(stream);
+        } catch (err) {
+            console.log('[getMedia2] error:');
+            console.log(err);
+        }
 }
+
 window.onload = function() {
     const elFreqL = document.getElementById('freqL');
     renderer.setup()
@@ -137,17 +124,34 @@ window.onload = function() {
     console.log(gainVolume);
 
     console.log(elFreqL);
-    var constraints = {
-        audio: { 
-            deviceId: 'default',
-            deviceIdStereoMixer: '31361cb0922b6e86159069bad11d45dc44ae4c4ff9b5a23a0ba675ebee337af3'
+
+    /*
+        With just audio: 'true' to capture sound, the getUserMedia just
+    returns mic audio streams. To be able to capture the system audio
+    and have stereo stream, it must specify the source to be 'desktop'.
+        
+        But to be able to capture the system audio the video 
+    capture must be enabled. Enabling just audio capture with
+      chromeMediaSource: 'desktop' gives the error:
+      DOMException: Requested device not found
+    */
+    var constraints2 = {
+        audio: {
+            mandatory: {
+                chromeMediaSource: 'desktop'
+            }
         },
-        video: false
+        video: {
+            mandatory: {
+                chromeMediaSource: 'desktop'
+            }
+        }
     };
 
+    // debug: list media sources
     enumerate();
 
-    getMedia(constraints);
+    getMedia2(constraints2);
 }
 
 window.onresize = function() {
