@@ -19,6 +19,9 @@ export default class Renderer {
         this.setupExample4()
 
         this.showExample("example1");
+        this.showExample("example2");
+        this.showExample("example3");
+        this.showExample("example4");
 
     }
 
@@ -169,7 +172,7 @@ export default class Renderer {
         this.util.drawVolumeBar(this.canvasEx2LedLCtx, LedVolumeBar2L);
         this.util.drawVolumeBar(this.canvasEx2LedRCtx, LedVolumeBar2R);
 
-        const volumeBar2L = VolumeBar.getSegmentedVolumeBar(this.cc2L, volumeR, maxVolume);
+        const volumeBar2L = VolumeBar.getSegmentedVolumeBar(this.cc2L, volumeL, maxVolume);
         const volumeBar2R = VolumeBar.getSegmentedVolumeBar(this.ccEx2, volumeR, maxVolume);
 
         this.util.drawVolumeBar(this.canvasEx2LCtx, volumeBar2L);

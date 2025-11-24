@@ -8,7 +8,7 @@ const path = require('path')
 function createWindow () {
     const win = new BrowserWindow({
       width: 410,
-      height: 280,
+      height: 680,
       webPreferences: {
         preload: path.join(__dirname, 'preload.js')
       }
@@ -28,6 +28,7 @@ function createWindow () {
     }))
     vuMenu.append(new MenuItem({label:'example2', 
         type:'checkbox',
+        checked:true,
         click:(event, focusedWindow, webContents)=>{
             console.log('example2 clicked')
             win.webContents.send('from-example-ch', 'example2')
@@ -36,6 +37,7 @@ function createWindow () {
     }))
     vuMenu.append(new MenuItem({label:'example3', 
         type:'checkbox',
+        checked:true,
         click:(event, focusedWindow, webContents)=>{
             console.log('example3 clicked')
             win.webContents.send('from-example-ch', 'example3')
@@ -44,6 +46,7 @@ function createWindow () {
     }))
     vuMenu.append(new MenuItem({label:'example4', 
         type:'checkbox',
+        checked:true,
         click:(event, focusedWindow, webContents)=>{
             console.log('example4 clicked')
             win.webContents.send('from-example-ch', 'example4')
